@@ -1,5 +1,5 @@
 package Data;
-//import packages
+//import required packages
 import Business.CustomerInfo;
 
 import java.io.EOFException;
