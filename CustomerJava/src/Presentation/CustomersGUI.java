@@ -151,15 +151,18 @@ public class CustomersGUI {
         ActionListener btnAdd = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+//CHECK CUSTOMER ID SHOULD BE A NUMBER
                 try {
                     int cusId = Integer.parseInt(txtCusId.getText());
+//GET ALL INPUT VALUES                  
                     String name = txtName.getText().trim();
                     String phone = txtPhoneNo.getText().trim();
                     String email = txtEmail.getText().trim();
                     String province = comboBox.getSelectedItem().toString();
                     String posCode = txtPostalCode.getText().trim();
+//PASS VALUES IN METHOD VALIDATION                   
                     if (validator.validationDurAdd(cusId, name, phone, email, posCode)) {
+//PASS VALUES TO CLASS CONSTRUCTOR                        
                         customerInfo = new CustomerInfo(cusId, name, phone, email, province, posCode);
                         binaryIO.writeData(customerInfo);
                         JOptionPane.showMessageDialog(null, "Successfull");
@@ -209,6 +212,7 @@ public class CustomersGUI {
                     String posCode = txtPostalCode.getText().trim();
                     if (validator.validationDurUpdate(cusId, name, phone, email, posCode)) {
                         customerInfo = new CustomerInfo(cusId, name, phone, email, province, posCode);
+//UPDATE DATA INTO FILE                      
                         binaryIO.updateData(customerInfo);
                         JOptionPane.showMessageDialog(null, "Successfull");
                         txtCusId.setText("");
@@ -231,7 +235,7 @@ public class CustomersGUI {
             textArea.setText("");
             Font font1 = new Font("TimesRoman", Font.PLAIN, 14);
             textArea.setFont(font1);
-
+//GET ALL DATA FROM FILE AND PRINT IN TEXTAREA
             String result = binaryIO.listCustomers();
             if (!"".equals(result)) {
                 textArea.append(result);
