@@ -3,10 +3,10 @@ package Business;
 import java.io.Serializable;
 
 public class CustomerInfo implements Serializable {
-
+//DECLARE VARIABLES
     public int id;
     public String name, phone, email, province, postalCode;
-
+//CONSTRUCTOR
     public CustomerInfo(int id, String name, String phone, String email, String province, String postalCode) {
         this.id = id;
         this.name = name;
@@ -15,7 +15,7 @@ public class CustomerInfo implements Serializable {
         this.province = province;
         this.postalCode = postalCode;
     }
-
+//GETTER AND SETTERS
     public int getId() {
         return id;
     }
