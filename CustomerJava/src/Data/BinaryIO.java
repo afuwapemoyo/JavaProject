@@ -14,14 +14,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class BinaryIO {
-
+//declare variables for binary file
     private FileInputStream fis;
     private ObjectInputStream ois;
     private FileOutputStream fos;
     private ObjectOutputStream oos;
 
     public boolean chkCusId(int cusId) {
-
+//method to check customer ID is already present in files or not.
         try {
 
             File f = new File("CustomerData.dat");
@@ -29,7 +29,7 @@ public class BinaryIO {
 
                 fis = new FileInputStream(f);
                 ois = new ObjectInputStream(fis);
-
+//arraylist because of binary file
                 ArrayList<CustomerInfo> infos = (ArrayList<CustomerInfo>) ois.readObject();
                 ois.close();
 
@@ -51,12 +51,12 @@ public class BinaryIO {
 
         return true;
     }
-
+//method to write data in binary file
     public void writeData(CustomerInfo customerInfo) {
 
         File f = new File("CustomerData.dat");
         ArrayList<CustomerInfo> infos = new ArrayList<>();
-
+//1st read previous data and save into file
         try {
 
             if (f.exists()) {
@@ -73,7 +73,7 @@ public class BinaryIO {
         } catch (Exception e) {
             infos = new ArrayList<>();
         }
-
+//then add all arrayList data at a time in binary file
         try {
 
             infos.add(customerInfo);
@@ -88,7 +88,7 @@ public class BinaryIO {
             System.out.println(e);
         }
     }
-
+//method to find customer details by given customer id
     public String findCustomer(int cusId) {
         try {
 
@@ -157,7 +157,7 @@ public class BinaryIO {
         }
         return str;
     }
-
+//method that update data given customer ID 9use setter method of customer info class
     public void updateData(CustomerInfo customerInfo) {
 
         File f = new File("CustomerData.dat");
